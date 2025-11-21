@@ -1,0 +1,49 @@
+
+
+using System;
+
+
+public class Program
+{
+	
+	public static void Main()
+    {		
+		int[] sortedArray = { 1, 3, 5, 8, 12, 16, 21, 23, 38, 55, 72, 91, 101 };
+        int target = 23;
+		int iterationNumber = 0;
+      
+		int result = RecursiveSearch(sortedArray, target, 0, sortedArray.Length - 1, iterationNumber);
+		Console.Write($"Target index: {result}");
+	}
+	
+   private static int RecursiveSearch(int[] arr, int target, int lowIndex, int highIndex, int iterationNumber)
+    {
+	   iterationNumber++;
+	   Console.Write($"Interation number: {iterationNumber} \n");
+	   
+        if (lowIndex > highIndex)
+        {
+            return -1;
+        }
+
+        int midIndex = lowIndex + (highIndex - lowIndex) / 2;
+
+        if (arr[midIndex] == target)
+        {
+            return midIndex;
+        }
+        else if (arr[midIndex] < target)
+        {
+            return RecursiveSearch(arr, target, midIndex + 1, highIndex, iterationNumber);
+        }
+        else
+        {
+            return RecursiveSearch(arr, target, lowIndex, midIndex - 1, iterationNumber);
+        }
+    }
+}
+
+
+
+
+   
