@@ -1,0 +1,46 @@
+
+using System;
+
+
+public class Program
+{
+	
+	public static void Main()
+    {
+		
+		int[] sortedArray = { 1, 3, 5, 8, 12, 16, 21, 23, 38, 55, 72, 91, 101 };
+        int target = 23;
+      
+		int result = IterativeBinarySearch(sortedArray, target);
+		Console.Write($"Target index: {result}");
+	}
+	
+    public static int IterativeBinarySearch(int[] arr, int target)
+    {
+        int lowIndex = 0;
+        int highIndex = arr.Length - 1;
+		int iterationNumber = 0;
+
+        while (lowIndex <= highIndex)
+        {
+			iterationNumber++;
+			Console.Write($"Interation number: {iterationNumber} \n");
+            int mid = lowIndex + (highIndex - lowIndex) / 2;
+
+            if (arr[mid] == target)
+            {
+                return mid;
+            }
+            else if (arr[mid] < target)
+            {
+                lowIndex = mid + 1;
+            }
+            else
+            {
+                highIndex = mid - 1;
+            }
+        }
+
+        return -1;
+    }
+}
